@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Marketing Plan | LocalBoost AI</title>
+
+  <meta
+    name="description"
+    content="Apne local business ke liye personalized marketing plan request karein."
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">LocalBoost AI</a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="gym-growth-plan.html">Gym Plan</a>
+      <a href="generator.html" class="nav-cta">Free plan banayein</a>
+    </nav>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Navigation menu kholen"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <p class="eyebrow">Free starter plan</p>
+
+        <h1>Apne business ke liye marketing plan request karein.</h1>
+
+        <p>
+          Apne business ki basic details bharein. Form submit hone ke baad
+          hum aapki request review karenge aur next steps email karenge.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="generator-layout">
+        <aside class="generator-info">
+          <p class="eyebrow" style="color:#b8c7ff;">LocalBoost AI</p>
+
+          <h2>Aapko kya milega?</h2>
+
+          <p>
+            Aapki business details ke aadhar par ek practical local marketing
+            plan request bheji jayegi.
+          </p>
+
+          <ul>
+            <li>✓ Aapke business category ke liye content ideas</li>
+            <li>✓ City aur locality ke hisaab se marketing angles</li>
+            <li>✓ Caption aur Reel suggestions</li>
+            <li>✓ Offer aur WhatsApp campaign ideas</li>
+          </ul>
+
+          <p class="form-note">
+            Note: Is version mein AI plan automatically generate nahi hota.
+            Aapki request pehle review ki jayegi.
+          </p>
+        </aside>
+
+        <form
+          class="generator-form animated-form"
+          id="generatorForm"
+          action="https://formspree.io/f/mwlvoygo"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="New LocalBoost AI plan request"
+          >
+
+          <input
+            type="hidden"
+            name="source"
+            value="LocalBoost AI generator page"
+          >
+
+          <input
+            type="hidden"
+            name="requested_plan"
+            id="requestedPlanHidden"
+            value="free"
+          >
+
+          <div class="form-heading">
+            <h2>Business details</h2>
+            <p>It takes about a minute. Required fields have an asterisk (*).</p>
+          </div>
+
+          <div class="form-progress" aria-label="Form progress">
+            <div class="progress-step active" data-progress-step="1">
+              <span>1</span>
+              <small>Business</small>
+            </div>
+
+            <div class="progress-track">
+              <span id="progressTrackFill"></span>
+            </div>
+
+            <div class="progress-step" data-progress-step="2">
+              <span>2</span>
+              <small>Goal</small>
+            </div>
+
+            <div class="progress-track">
+              <span id="progressTrackFillTwo"></span>
+            </div>
+
+            <div class="progress-step" data-progress-step="3">
+              <span>3</span>
+              <small>Contact</small>
+            </div>
+          </div>
+
+          <!-- Step 1: Business -->
+          <section class="form-step active" data-form-step="1">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="businessName">Business name *</label>
+                <input
+                  id="businessName"
+                  name="business_name"
+                  type="text"
+                  placeholder="Example: Iron Core Fitness"
+                  autocomplete="organization"
+                  maxlength="100"
+                  required
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="category">Business category *</label>
+                <select id="category" name="business_category" required>
+                  <option value="">Select category</option>
+                  <option value="Salon / Beauty">Salon / Beauty</option>
+                  <option value="Restaurant / Cafe / Bakery">Restaurant / Café / Bakery</option>
+                  <option value="Gym / Fitness / Yoga">Gym / Fitness / Yoga</option>
+                  <option value="Boutique / Fashion">Boutique / Fashion</option>
+                  <option value="Coaching / Education">Coaching / Education</option>
+                  <option value="Other local business">Other local business</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="city">City *</label>
+                <input
+                  id="city"
+                  name="city"
+                  type="text"
+                  placeholder="Example: Indore"
+                  autocomplete="address-level2"
+                  maxlength="80"
+                  required
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="locality">Locality / area</label>
+                <input
+                  id="locality"
+                  name="locality"
+                  type="text"
+                  placeholder="Example: Vijay Nagar"
+                  maxlength="100"
+                >
+              </div>
+            </div>
+
+            <button type="button" class="button button-primary step-next">
+              Continue →
+            </button>
+          </section>
+
+          <!-- Step 2: Goal -->
+          <section class="form-step" data-form-step="2" hidden>
+            <div class="form-field">
+              <label for="goal">Main marketing goal *</label>
+              <select id="goal" name="marketing_goal" required>
+                <option value="">Select your goal</option>
+                <option value="More WhatsApp enquiries">More WhatsApp enquiries</option>
+                <option value="More bookings">More bookings</option>
+                <option value="More walk-ins">More walk-ins</option>
+                <option value="More repeat customers">More repeat customers</option>
+                <option value="More Instagram reach">More Instagram reach</option>
+                <option value="More gym memberships">More gym memberships</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="language">Preferred language *</label>
+              <select id="language" name="preferred_language" required>
+                <option value="">Choose a language</option>
+                <option value="Hinglish">Hinglish</option>
+                <option value="Hindi">Hindi</option>
+                <option value="English">English</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="offer">Main service or current offer</label>
+              <textarea
+                id="offer"
+                name="main_offer"
+                placeholder="Example: 3-day gym trial or weekday lunch combo"
+                maxlength="500"
+              ></textarea>
+            </div>
+
+            <div class="form-navigation">
+              <button type="button" class="button button-secondary step-back">
+                ← Back
+              </button>
+
+              <button type="button" class="button button-primary step-next">
+                Continue →
+              </button>
+            </div>
+          </section>
+
+          <!-- Step 3: Contact -->
+          <section class="form-step" data-form-step="3" hidden>
+            <div class="form-field">
+              <label for="email">Email address *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                maxlength="150"
+                required
+              >
+            </div>
+
+            <label class="consent" for="consent">
+              <input
+                id="consent"
+                name="consent"
+                type="checkbox"
+                value="I agree to use of my details for this plan request"
+                required
+              >
+              <span>
+                I agree that LocalBoost AI may use these details to review and
+                respond to my plan request. I understand that this version does
+                not automatically generate an AI plan.
+              </span>
+            </label>
+
+            <div class="form-navigation">
+              <button type="button" class="button button-secondary step-back">
+                ← Back
+              </button>
+
+              <button
+                type="submit"
+                class="button button-primary submit-button"
+                id="submitButton"
+              >
+                <span class="submit-button-label">Submit plan request →</span>
+                <span class="submit-spinner" aria-hidden="true"></span>
+              </button>
+            </div>
+          </section>
+
+          <div
+            id="formResponse"
+            class="form-response"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">LB</span>
+          LocalBoost AI
+        </a>
+        <p>Local businesses ke liye simple, practical AI marketing.</p>
+
+        <div class="footer-social">
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="resources.html">Resources</a>
+      </div>
+
+      <!-- For Business -->
+      <div class="footer-col">
+        <h4>For Business</h4>
+        <a href="generator.html">Get my plan</a>
+        <a href="gym-growth-plan.html">Gym Plan</a>
+        <a href="features.html">Features</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:shubhamj232116@gmail.com">shubhamj232116@gmail.com</a>
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp Support</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 LocalBoost AI. All rights reserved. Designed &amp; Developed by <strong>Shubham Jaiswal</strong>.
+    </div>
+  </div>
+</footer>
+
+  <!-- Shared website script -->
+  <script src="script.js"></script>
+
+  <!-- Generator form script -->
+  <script>
+    const formUrlParams = new URLSearchParams(window.location.search);
+    const generatorCategory = document.getElementById("category");
+    const planField = document.getElementById("requestedPlanHidden");
+    const allowedPlans = ["free", "starter", "growth"];
+    const planFromUrl = formUrlParams.get("plan");
+
+    if (generatorCategory && formUrlParams.get("category") === "gym") {
+      generatorCategory.value = "Gym / Fitness / Yoga";
+    }
+
+    if (planField && allowedPlans.includes(planFromUrl)) {
+      planField.value = planFromUrl;
+    }
+
+    const generatorForm = document.getElementById("generatorForm");
+    const formSteps = Array.from(
+      document.querySelectorAll("[data-form-step]")
+    );
+    const progressSteps = Array.from(
+      document.querySelectorAll("[data-progress-step]")
+    );
+    const progressFillOne = document.getElementById("progressTrackFill");
+    const progressFillTwo = document.getElementById("progressTrackFillTwo");
+    const submitButton = document.getElementById("submitButton");
+    const submitLabel = submitButton
+      ? submitButton.querySelector(".submit-button-label")
+      : null;
+    const formResponse = document.getElementById("formResponse");
+
+    let currentStep = 1;
+
+    function getStep(stepNumber) {
+      return document.querySelector(
+        `[data-form-step="${stepNumber}"]`
+      );
+    }
+
+    function updateProgress(stepNumber) {
+      progressSteps.forEach(function (item) {
+        const number = Number(item.dataset.progressStep);
+        item.classList.toggle("active", number === stepNumber);
+        item.classList.toggle("completed", number < stepNumber);
+      });
+
+      if (progressFillOne) {
+        progressFillOne.style.width = stepNumber >= 2 ? "100%" : "0%";
+      }
+
+      if (progressFillTwo) {
+        progressFillTwo.style.width = stepNumber >= 3 ? "100%" : "0%";
+      }
+    }
+
+    function showStep(stepNumber) {
+      formSteps.forEach(function (step) {
+        const isCurrent = Number(step.dataset.formStep) === stepNumber;
+        step.hidden = !isCurrent;
+        step.classList.toggle("active", isCurrent);
+        step.classList.remove("leaving-next", "leaving-back");
+      });
+
+      currentStep = stepNumber;
+      updateProgress(stepNumber);
+
+      const section = getStep(stepNumber);
+      const firstField = section
+        ? section.querySelector(
+            'input:not([type="hidden"]), select, textarea'
+          )
+        : null;
+
+      if (firstField) {
+        window.setTimeout(function () {
+          firstField.focus({ preventScroll: true });
+        }, 180);
+      }
+    }
+
+    function validateCurrentStep() {
+      const section = getStep(currentStep);
+      if (!section) return true;
+
+      const fields = section.querySelectorAll(
+        "input, select, textarea"
+      );
+
+      for (const field of fields) {
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          field.focus();
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    document.querySelectorAll(".step-next").forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (!validateCurrentStep()) return;
+        if (currentStep >= formSteps.length) return;
+
+        const section = getStep(currentStep);
+        if (section) section.classList.add("leaving-next");
+
+        window.setTimeout(function () {
+          showStep(currentStep + 1);
+        }, 180);
+      });
+    });
+
+    document.querySelectorAll(".step-back").forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (currentStep <= 1) return;
+
+        const section = getStep(currentStep);
+        if (section) section.classList.add("leaving-back");
+
+        window.setTimeout(function () {
+          showStep(currentStep - 1);
+        }, 180);
+      });
+    });
+
+    function setSubmitState(state, label) {
+      if (!submitButton) return;
+
+      submitButton.classList.remove(
+        "is-loading",
+        "is-success",
+        "is-error"
+      );
+
+      if (state) submitButton.classList.add(state);
+      if (submitLabel && label) submitLabel.textContent = label;
+
+      submitButton.disabled =
+        state === "is-loading" || state === "is-success";
+    }
+
+    function displayResponse(text, isError) {
+      if (!formResponse) return;
+
+      formResponse.hidden = false;
+      formResponse.textContent = text;
+      formResponse.classList.toggle("error", Boolean(isError));
+    }
+
+    if (generatorForm) {
+      generatorForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (!validateCurrentStep()) return;
+
+        if (!generatorForm.checkValidity()) {
+          const invalidField = generatorForm.querySelector(":invalid");
+          const invalidStep = invalidField
+            ? invalidField.closest("[data-form-step]")
+            : null;
+
+          if (invalidField && invalidStep) {
+            const invalidStepNumber = Number(
+              invalidStep.dataset.formStep
+            );
+
+            showStep(invalidStepNumber);
+
+            window.setTimeout(function () {
+              invalidField.reportValidity();
+              invalidField.focus();
+            }, 180);
+          }
+
+          return;
+        }
+
+        if (formResponse) {
+          formResponse.hidden = true;
+          formResponse.classList.remove("error");
+          formResponse.textContent = "";
+        }
+
+        setSubmitState("is-loading", "Sending request…");
+
+        try {
+          const response = await fetch(generatorForm.action, {
+            method: "POST",
+            body: new FormData(generatorForm),
+            headers: {
+              Accept: "application/json"
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error("Formspree request failed.");
+          }
+
+          setSubmitState("is-success", "Request received ✓");
+
+          displayResponse(
+            "Thank you! Redirecting to confirmation page…",
+            false
+          );
+
+          // thank-you.html generator.html ke same folder mein hona chahiye.
+          window.setTimeout(function () {
+            window.location.href = "./thank-you.html";
+          }, 1200);
+        } catch (error) {
+          setSubmitState("is-error", "Could not send — try again");
+
+          displayResponse(
+            "Request send nahi ho paayi. Internet connection check karke dobara try karein.",
+            true
+          );
+
+          window.setTimeout(function () {
+            setSubmitState("", "Submit plan request →");
+          }, 2200);
+        }
+      });
+    }
+
+    updateProgress(1);
+  </script>
+</body>
+</html>
