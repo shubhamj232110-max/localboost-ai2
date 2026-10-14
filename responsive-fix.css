@@ -1,0 +1,113 @@
+/* GLOBAL RESPONSIVE FIX */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Navbar */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .menu-button {
+    display: grid !important;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #eef3ff;
+  }
+
+  .nav-links {
+    position: fixed !important;
+    top: 74px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: none !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 14px 16px 18px;
+    background: #fff;
+    border-bottom: 1px solid #e7eaf0;
+    box-shadow: 0 18px 40px rgba(16, 24, 40, 0.14);
+  }
+
+  .nav-links.open {
+    display: flex !important;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+}
+
+/* Footer */
+@media (max-width: 700px) {
+  .footer {
+    padding: 38px 0 20px !important;
+  }
+
+  .footer .container {
+    padding: 0 16px !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .footer-brand p {
+    max-width: 100% !important;
+  }
+
+  .footer-bottom {
+    font-size: 0.78rem !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* Common grids */
+@media (max-width: 900px) {
+  .three-column,
+  .four-column,
+  .pricing-grid,
+  .process-grid,
+  .gym-problem-grid,
+  .how-prepare-grid,
+  .resources-grid,
+  .pricing-request-steps {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero,
+  .gym-hero,
+  .how-hero,
+  .generator-layout,
+  .feature-showcase,
+  .lb-final-cta,
+  .gym-trust-inner,
+  .how-trust-inner,
+  .resources-tip-inner {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .section,
+  .process-section {
+    padding: 65px 18px !important;
+  }
+}
