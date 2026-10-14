@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,257 +14,21 @@
   >
 
   <title>How It Works | LocalBoost AI</title>
-
-  <!-- Bootstrap Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css"
-  >
-
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* Buttons */
-    .button {
-      position: relative;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-    }
-
-    .button:active {
-      transform: translateY(1px) scale(0.98);
-    }
-
-    .button .bi {
-      transition: transform 0.25s ease;
-    }
-
-    .button:hover .bi {
-      transform: translateX(3px);
-    }
-
-    .lb-ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.55);
-      transform: scale(0);
-      animation: lbRipple 0.6s linear;
-      pointer-events: none;
-    }
-
-    @keyframes lbRipple {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
-    }
-
-    /* Step cards */
-    .how-step-card {
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .how-step-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.16);
-    }
-
-    .how-step-card .step-number {
-      transition: transform 0.35s ease, color 0.35s ease;
-    }
-
-    .how-step-card:hover .step-number {
-      transform: scale(1.15) rotate(-4deg);
-    }
-
-    /* Prepare cards */
-    .how-prepare-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .how-prepare-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
-    }
-
-    .how-prepare-card span {
-      transition: transform 0.3s ease;
-    }
-
-    .how-prepare-card:hover span {
-      transform: scale(1.15);
-    }
-
-    /* Trust list */
-    .how-trust-list p {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: transform 0.25s ease;
-    }
-
-    .how-trust-list p:hover {
-      transform: translateX(6px);
-    }
-
-    /* Footer */
-    .footer-inner {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 35px;
-      align-items: start;
-    }
-
-    .footer-title {
-      font-weight: 700;
-      margin: 0 0 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .footer-links a,
-    .footer-contact a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      transition: transform 0.25s ease, color 0.25s ease;
-    }
-
-    .footer-links a:hover,
-    .footer-contact a:hover {
-      transform: translateX(4px);
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .footer-social a {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.12);
-      color: inherit;
-      font-size: 1.2rem;
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-
-    .footer-social a:hover {
-      transform: translateY(-4px) scale(1.06);
-      background: rgba(255, 255, 255, 0.22);
-    }
-
-    .footer-developer {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 18px;
-      padding: 20px;
-    }
-
-    .developer-name {
-      font-weight: 700;
-      margin: 0 0 4px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .developer-role {
-      margin: 0 0 14px;
-      opacity: 0.8;
-    }
-
-    .developer-social {
-      display: flex;
-      gap: 10px;
-    }
-
-    .developer-social a {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.14);
-      color: inherit;
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-
-    .developer-social a:hover {
-      transform: translateY(-3px) scale(1.08);
-      background: rgba(255, 255, 255, 0.24);
-    }
-
-    @media (max-width: 700px) {
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
-    <a href="index.html" class="logo">
-      <i class="bi bi-rocket-takeoff"></i>
-      LocalBoost AI
-    </a>
+    <a href="index.html" class="logo">LocalBoost AI</a>
 
     <nav class="nav-links" id="navLinks">
-      <a href="index.html">
-        <i class="bi bi-house-door"></i>
-        Home
-      </a>
-
-      <a class="active" href="how-it-works.html">
-        <i class="bi bi-diagram-3"></i>
-        How it works
-      </a>
-
-      <a href="features.html">
-        <i class="bi bi-stars"></i>
-        Features
-      </a>
-
-      <a href="pricing.html">
-        <i class="bi bi-tags"></i>
-        Pricing
-      </a>
-
-      <a href="resources.html">
-        <i class="bi bi-journal-text"></i>
-        Resources
-      </a>
-
-      <a href="generator.html" class="nav-cta">
-        <i class="bi bi-magic"></i>
-        Free plan banayein
-      </a>
+      <a href="index.html">Home</a>
+      <a class="active" href="how-it-works.html">How it works</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="resources.html">Resources</a>
+      <a href="generator.html" class="nav-cta">Free plan banayein</a>
     </nav>
 
     <button
@@ -270,18 +38,15 @@
       aria-label="Open navigation menu"
       aria-expanded="false"
     >
-      <i class="bi bi-list"></i>
+      ☰
     </button>
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- PAGE HERO -->
     <section class="page-hero how-hero how-gradient">
       <div class="page-hero-content reveal from-left">
-        <p class="eyebrow">
-          <i class="bi bi-signpost-split"></i>
-          Simple process
-        </p>
+        <p class="eyebrow">Simple process</p>
 
         <h1>
           A clear path from business details to a practical marketing plan.
@@ -293,8 +58,7 @@
         </p>
 
         <a href="generator.html" class="button button-primary how-hero-button">
-          <i class="bi bi-magic"></i>
-          Request your plan
+          Request your plan →
         </a>
       </div>
 
@@ -303,13 +67,8 @@
 
         <div class="how-flow-item">
           <span class="how-flow-number">01</span>
-
           <div>
-            <strong>
-              <i class="bi bi-clipboard-data"></i>
-              Business details
-            </strong>
-
+            <strong>Business details</strong>
             <p>Category, city, audience and goal</p>
           </div>
         </div>
@@ -318,13 +77,8 @@
 
         <div class="how-flow-item">
           <span class="how-flow-number">02</span>
-
           <div>
-            <strong>
-              <i class="bi bi-lightbulb"></i>
-              Plan preparation
-            </strong>
-
+            <strong>Plan preparation</strong>
             <p>Content topics, captions and ideas</p>
           </div>
         </div>
@@ -333,13 +87,8 @@
 
         <div class="how-flow-item">
           <span class="how-flow-number">03</span>
-
           <div>
-            <strong>
-              <i class="bi bi-check2-circle"></i>
-              Review and use
-            </strong>
-
+            <strong>Review and use</strong>
             <p>Check details before publishing</p>
           </div>
         </div>
@@ -349,13 +98,8 @@
     <!-- THREE STEPS -->
     <section class="section how-steps-section">
       <div class="section-heading reveal">
-        <p class="eyebrow">
-          <i class="bi bi-diagram-3"></i>
-          Three simple steps
-        </p>
-
+        <p class="eyebrow">Three simple steps</p>
         <h2>How your plan request works</h2>
-
         <p>
           You do not need marketing or technical experience to request a plan.
         </p>
@@ -364,14 +108,8 @@
       <div class="three-column stagger-parent">
         <article class="info-card how-step-card reveal">
           <span class="how-step-tag">STEP 01</span>
-
           <div class="step-number">01</div>
-
-          <h3>
-            <i class="bi bi-shop"></i>
-            Tell us about your business
-          </h3>
-
+          <h3>Tell us about your business</h3>
           <p>
             Share your business name, category, city, audience, main service
             and marketing goal in the request form.
@@ -380,14 +118,8 @@
 
         <article class="info-card how-step-card reveal">
           <span class="how-step-tag">STEP 02</span>
-
           <div class="step-number">02</div>
-
-          <h3>
-            <i class="bi bi-lightbulb"></i>
-            We review and tailor the ideas
-          </h3>
-
+          <h3>We review and tailor the ideas</h3>
           <p>
             Your details help us prepare relevant content topics, Reel ideas,
             caption directions and promotion suggestions.
@@ -396,14 +128,8 @@
 
         <article class="info-card how-step-card reveal">
           <span class="how-step-tag">STEP 03</span>
-
           <div class="step-number">03</div>
-
-          <h3>
-            <i class="bi bi-check2-circle"></i>
-            Review before you publish
-          </h3>
-
+          <h3>Review before you publish</h3>
           <p>
             Check every price, offer, service and claim. Edit the suggestions
             to match your real business before posting.
@@ -412,7 +138,6 @@
       </div>
 
       <div class="note-box reveal">
-        <i class="bi bi-info-circle"></i>
         Your request is not an automatic AI-generated plan yet. We review the
         submitted details and share the next steps.
       </div>
@@ -422,10 +147,7 @@
     <section class="orange-section section how-example-section">
       <div class="feature-showcase how-example-card">
         <div class="reveal from-left">
-          <p class="eyebrow">
-            <i class="bi bi-eye"></i>
-            Sample example
-          </p>
+          <p class="eyebrow">Sample example</p>
 
           <h2>What could a local business plan include?</h2>
 
@@ -440,7 +162,6 @@
           </p>
 
           <a href="generator.html" class="button button-primary">
-            <i class="bi bi-magic"></i>
             Request a plan for my business
           </a>
         </div>
@@ -482,13 +203,8 @@
     <!-- WHAT TO PREPARE -->
     <section class="section">
       <div class="section-heading reveal">
-        <p class="eyebrow">
-          <i class="bi bi-card-checklist"></i>
-          Prepare before you start
-        </p>
-
+        <p class="eyebrow">Prepare before you start</p>
         <h2>What details will help us make your plan relevant?</h2>
-
         <p>
           More accurate business details make it easier to prepare useful,
           realistic marketing suggestions.
@@ -498,45 +214,25 @@
       <div class="how-prepare-grid stagger-parent">
         <article class="how-prepare-card reveal">
           <span>01</span>
-
-          <h3>
-            <i class="bi bi-box-seam"></i>
-            Your service or product
-          </h3>
-
+          <h3>Your service or product</h3>
           <p>Tell us what your business sells or which services you provide.</p>
         </article>
 
         <article class="how-prepare-card reveal">
           <span>02</span>
-
-          <h3>
-            <i class="bi bi-geo-alt"></i>
-            Your city and area
-          </h3>
-
+          <h3>Your city and area</h3>
           <p>Share your city and neighbourhood so local ideas can be more relevant.</p>
         </article>
 
         <article class="how-prepare-card reveal">
           <span>03</span>
-
-          <h3>
-            <i class="bi bi-tags"></i>
-            Your real offer
-          </h3>
-
+          <h3>Your real offer</h3>
           <p>Share the actual price, offer dates and conditions. Do not invent these.</p>
         </article>
 
         <article class="how-prepare-card reveal">
           <span>04</span>
-
-          <h3>
-            <i class="bi bi-bullseye"></i>
-            Your marketing goal
-          </h3>
-
+          <h3>Your marketing goal</h3>
           <p>Choose whether you want more enquiries, bookings, visits or repeat customers.</p>
         </article>
       </div>
@@ -546,13 +242,8 @@
     <section class="how-trust-section">
       <div class="how-trust-inner reveal">
         <div>
-          <p class="how-trust-eyebrow">
-            <i class="bi bi-shield-check"></i>
-            Accuracy comes first
-          </p>
-
+          <p class="how-trust-eyebrow">Accuracy comes first</p>
           <h2>Review your plan before you use it.</h2>
-
           <p>
             LocalBoost ideas are starting points. Confirm the business facts,
             offer terms, prices, photos and claims before publishing.
@@ -560,25 +251,10 @@
         </div>
 
         <div class="how-trust-list">
-          <p>
-            <i class="bi bi-check-circle-fill"></i>
-            Use real services and current prices
-          </p>
-
-          <p>
-            <i class="bi bi-image"></i>
-            Use photos you have permission to share
-          </p>
-
-          <p>
-            <i class="bi bi-x-circle"></i>
-            Avoid guaranteed sales or results claims
-          </p>
-
-          <p>
-            <i class="bi bi-chat-dots"></i>
-            Message customers only with appropriate consent
-          </p>
+          <p>✓ Use real services and current prices</p>
+          <p>✓ Use photos you have permission to share</p>
+          <p>✓ Avoid guaranteed sales or results claims</p>
+          <p>✓ Message customers only with appropriate consent</p>
         </div>
       </div>
     </section>
@@ -586,106 +262,24 @@
     <!-- FINAL CTA -->
     <section class="section">
       <div class="how-final-cta reveal">
-        <p class="eyebrow">
-          <i class="bi bi-rocket-takeoff"></i>
-          Ready to begin?
-        </p>
-
+        <p class="eyebrow">Ready to begin?</p>
         <h2>Share your business details and request your plan.</h2>
-
         <p>
           Start with a clear goal and the real information about your business.
         </p>
 
         <a href="generator.html" class="button button-primary">
-          <i class="bi bi-magic"></i>
-          Start my plan request
+          Start my plan request →
         </a>
       </div>
     </section>
   </main>
+<!-- Footer aur chatbot shared files se load honge -->
+<div id="sharedFooter"></div>
+<div id="sharedChatbot"></div>
 
- <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <!-- Brand -->
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <span class="brand-mark">LB</span>
-          LocalBoost AI
-        </a>
-        <p>Local businesses ke liye simple, practical AI marketing.</p>
-
-        <div class="footer-social">
-          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-            <i class="bi bi-instagram"></i>
-          </a>
-          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-            <i class="bi bi-facebook"></i>
-          </a>
-          <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <i class="bi bi-whatsapp"></i>
-          </a>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <i class="bi bi-linkedin"></i>
-          </a>
-          <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
-            <i class="bi bi-youtube"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="index.html">Home</a>
-        <a href="how-it-works.html">How it works</a>
-        <a href="features.html">Features</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="resources.html">Resources</a>
-      </div>
-
-      <!-- For Business -->
-      <div class="footer-col">
-        <h4>For Business</h4>
-        <a href="generator.html">Get my plan</a>
-        <a href="gym-growth-plan.html">Gym Plan</a>
-        <a href="features.html">Features</a>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:shubhamj232116@gmail.com">shubhamj232116@gmail.com</a>
-        <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp Support</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      © 2026 LocalBoost AI. All rights reserved. Designed &amp; Developed by <strong>Shubham Jaiswal</strong>.
-    </div>
-  </div>
-</footer>
-  <script src="script.js"></script>
-
-  <script>
-    // Button ripple
-    document.querySelectorAll(".button").forEach((button) => {
-      button.addEventListener("click", function (event) {
-        const ripple = document.createElement("span");
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
-        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
-        ripple.classList.add("lb-ripple");
-
-        button.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-      });
-    });
-  </script>
+<script src="shared-layout.js"></script>
+</body>
+</html>
 </body>
 </html>

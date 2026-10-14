@@ -6,200 +6,37 @@
 
   <meta
     name="description"
-    content="Explore LocalBoost AI features for content calendars, captions, Reel scripts and local business marketing."
+    content="Explore LocalBoost AI features for content calendar ideas, captions, Reel scripts and local business marketing."
   >
 
   <title>Features | LocalBoost AI</title>
 
-  <!-- Bootstrap Icons -->
+  <!-- Required for the current shared footer and site grid styles -->
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
   >
 
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* Buttons */
-    .button {
-      position: relative;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-    }
-
-    .button:active {
-      transform: translateY(1px) scale(0.98);
-    }
-
-    .button .bi {
-      transition: transform 0.25s ease;
-    }
-
-    .button:hover .bi {
-      transform: translateX(3px);
-    }
-
-    .lb-ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.55);
-      transform: scale(0);
-      animation: lbRipple 0.6s linear;
-      pointer-events: none;
-    }
-
-    @keyframes lbRipple {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
-    }
-
-    /* Feature icon animation */
-    .feature-card .icon {
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .feature-card:hover .icon {
-      transform: translateY(-5px) scale(1.15);
-    }
-
-    .feature-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Category image cards */
-    .lb-category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 32px;
-    }
-
-    .lb-category-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.10);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .lb-category-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
-    }
-
-    .lb-category-image {
-      position: relative;
-      height: 210px;
-      overflow: hidden;
-    }
-
-    .lb-category-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .lb-category-card:hover .lb-category-image img {
-      transform: scale(1.08);
-    }
-
-    .lb-category-logo {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.94);
-      color: #6d28d9;
-      font-size: 1.25rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-    }
-
-    .lb-category-body {
-      padding: 22px;
-    }
-
-    .lb-category-body h3 {
-      margin: 0 0 8px;
-    }
-
-    .lb-category-body p {
-      margin: 0;
-      color: #555;
-      line-height: 1.6;
-    }
-
-  
-    
-  </style>
 </head>
 
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
-    <a href="index.html" class="logo">
-      <i class="bi bi-rocket-takeoff"></i>
-      LocalBoost AI
-    </a>
+    <a href="index.html" class="logo">LocalBoost AI</a>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html">
-        <i class="bi bi-house-door"></i>
-        Home
-      </a>
-
-      <a href="how-it-works.html">
-        <i class="bi bi-diagram-3"></i>
-        How it works
-      </a>
-
-      <a class="active" href="features.html">
-        <i class="bi bi-stars"></i>
-        Features
-      </a>
-
-      <a href="pricing.html">
-        <i class="bi bi-tags"></i>
-        Pricing
-      </a>
-
-      <a href="resources.html">
-        <i class="bi bi-journal-text"></i>
-        Resources
-      </a>
-
-      <a href="generator.html" class="nav-cta">
-        <i class="bi bi-magic"></i>
-        Free plan banayein
-      </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How it works</a>
+      <a class="active" href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="resources.html">Resources</a>
+      <a href="generator.html" class="nav-cta">Free plan banayein</a>
     </nav>
 
     <button
@@ -209,7 +46,7 @@
       aria-label="Open navigation menu"
       aria-expanded="false"
     >
-      <i class="bi bi-list"></i>
+      ☰
     </button>
   </header>
 
@@ -217,20 +54,18 @@
     <!-- PAGE HERO -->
     <section class="page-hero how-hero how-gradient">
       <div class="page-hero-content reveal from-left">
-        <p class="eyebrow">
-          <i class="bi bi-box-seam"></i>
-          Everything in one place
-        </p>
-
+        <p class="eyebrow">Everything in one place</p>
         <h1>Ideas se aage—daily marketing action.</h1>
-
         <p>
-          LocalBoost AI aapko content, campaigns aur offers banane mein help karta hai.
+          LocalBoost AI aapko content, campaigns aur offers plan karne ke liye
+          practical ideas deta hai.
         </p>
 
-        <a href="generator.html" class="button button-primary how-hero-button">
-          <i class="bi bi-magic"></i>
-          Free plan banayein
+        <a
+          href="generator.html"
+          class="button button-primary how-hero-button"
+        >
+          Free plan request karein →
         </a>
       </div>
 
@@ -239,14 +74,9 @@
 
         <div class="how-flow-item">
           <span class="how-flow-number">01</span>
-
           <div>
-            <strong>
-              <i class="bi bi-calendar3"></i>
-              30-Day Calendars
-            </strong>
-
-            <p>Structured daily themes and posts</p>
+            <strong>Content Calendar Ideas</strong>
+            <p>Structured daily themes and post suggestions</p>
           </div>
         </div>
 
@@ -254,14 +84,9 @@
 
         <div class="how-flow-item">
           <span class="how-flow-number">02</span>
-
           <div>
-            <strong>
-              <i class="bi bi-chat-left-text"></i>
-              Ready-to-Post
-            </strong>
-
-            <p>Captions, Reel hooks &amp; scripts</p>
+            <strong>Captions and Reel Scripts</strong>
+            <p>Drafts you can review and adapt</p>
           </div>
         </div>
 
@@ -269,14 +94,9 @@
 
         <div class="how-flow-item">
           <span class="how-flow-number">03</span>
-
           <div>
-            <strong>
-              <i class="bi bi-geo-alt"></i>
-              Local &amp; Offers
-            </strong>
-
-            <p>Targeted city angles &amp; promotions</p>
+            <strong>Local Offer Ideas</strong>
+            <p>City-aware promotion suggestions</p>
           </div>
         </div>
       </div>
@@ -285,142 +105,120 @@
     <!-- FEATURES GRID -->
     <section class="section">
       <div class="section-heading reveal">
-        <p class="eyebrow">
-          <i class="bi bi-tools"></i>
-          Powerful tools
+        <p class="eyebrow">Practical guidance</p>
+        <h2>Marketing ideas for your local business</h2>
+        <p>
+          Suggestions designed to make planning easier. Review and adapt
+          every draft before publishing.
         </p>
-
-        <h2>Everything your local business needs</h2>
-
-        <p>Designed specifically to make marketing simple and consistent.</p>
       </div>
 
       <div class="four-column stagger-parent">
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-calendar3"></i>
-          </div>
-
-          <h3>30-day content calendar</h3>
-
+          <div class="icon">▦</div>
+          <h3>Content calendar ideas</h3>
           <p>
-            Har date ke liye post type, topic, objective aur CTA ke saath plan.
+            Suggested post topics, formats, objectives and calls to action
+            for a consistent content routine.
           </p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-chat-left-text"></i>
-          </div>
-
-          <h3>Ready-to-post captions</h3>
-
+          <div class="icon">Aa</div>
+          <h3>Caption drafts</h3>
           <p>
-            Simple Hinglish, Hindi ya English captions, jo aap edit karke publish kar sakte hain.
+            Hindi, Hinglish or English caption drafts you can review and adapt
+            to your business voice.
           </p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-play-circle"></i>
-          </div>
-
-          <h3>Reel scripts</h3>
-
+          <div class="icon">▶</div>
+          <h3>Reel script ideas</h3>
           <p>
-            First 2-second hook, visual scenes, voiceover idea aur clear call-to-action.
+            Hook, visual scene and call-to-action ideas for short videos you
+            can film with a phone.
           </p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-whatsapp"></i>
-          </div>
-
-          <h3>WhatsApp campaign drafts</h3>
-
+          <div class="icon">◌</div>
+          <h3>WhatsApp draft ideas</h3>
           <p>
-            Existing opted-in customers ke liye reactivation aur offer campaign drafts.
+            Message drafts for customers who agreed to receive updates.
+            Respect opt-outs and applicable rules.
           </p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-percent"></i>
-          </div>
-
-          <h3>Offer ideas</h3>
-
+          <div class="icon">%</div>
+          <h3>Offer suggestions</h3>
           <p>
-            Slow-day offers, bundles, referrals, add-ons aur repeat purchase campaigns.
+            Ideas for slow days, bundles, referrals, add-ons and repeat-customer
+            campaigns.
           </p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-geo-alt"></i>
-          </div>
-
-          <h3>Local angle</h3>
-
+          <div class="icon">⌖</div>
+          <h3>Local angles</h3>
           <p>
-            City, locality, customer type aur seasonal context ko content mein naturally use karne ke ideas.
+            Ideas that can take your city, locality, audience and seasonal
+            context into account.
           </p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-stars"></i>
-          </div>
-
-          <h3>Brand voice</h3>
-
+          <div class="icon">✦</div>
+          <h3>Brand voice guidance</h3>
           <p>
-            Friendly, premium, fun ya traditional tone choose karke content ko consistent rakhein.
+            Keep drafts consistent with a friendly, premium, fun or
+            traditional tone.
           </p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="icon">
-            <i class="bi bi-pencil-square"></i>
-          </div>
-
-          <h3>Easy editing</h3>
-
+          <div class="icon">✓</div>
+          <h3>Editable drafts</h3>
           <p>
-            Future dashboard mein captions ko shorten, rewrite, translate aur edit karne ke options milenge.
+            Check and edit each idea so it reflects your actual services,
+            prices and business details.
           </p>
         </article>
       </div>
+
+      <p class="form-note">
+        This demo accepts plan requests; it does not automatically generate
+        or deliver a marketing plan.
+      </p>
     </section>
 
     <!-- CONTENT CALENDAR PREVIEW -->
     <section class="light-section section">
       <div class="feature-showcase">
         <div class="reveal from-left">
-          <p class="eyebrow">
-            <i class="bi bi-calendar-week"></i>
-            Content calendar preview
-          </p>
-
-          <h2>Har din ka purpose clear hoga.</h2>
+          <p class="eyebrow">Content calendar preview</p>
+          <h2>Har din ka purpose clear rakhein.</h2>
 
           <p>
-            Aapke calendar mein sirf offers nahi honge. Trust, education,
-            behind-the-scenes, engagement aur local posts ka mix hoga—taaki
-            audience bore na ho aur business visible rahe.
+            Calendar ideas can mix offers, education, behind-the-scenes,
+            engagement and local posts. Review each suggestion and adapt it
+            to your actual business.
           </p>
 
-          <a href="generator.html" class="button button-primary" style="margin-top: 20px;">
-            <i class="bi bi-magic"></i>
-            Apna plan banayein
+          <a
+            href="generator.html"
+            class="button button-primary"
+            style="margin-top: 20px;"
+          >
+            Apna plan request karein →
           </a>
         </div>
 
         <div class="calendar-preview stagger-parent reveal from-right">
           <div class="calendar-item reveal">
             <span>MON · OFFER</span>
-            <strong>Weekday booking offer</strong>
+            <strong>Weekday booking offer idea</strong>
           </div>
 
           <div class="calendar-item reveal">
@@ -430,12 +228,12 @@
 
           <div class="calendar-item reveal">
             <span>WED · REEL</span>
-            <strong>Behind the scenes</strong>
+            <strong>Behind-the-scenes idea</strong>
           </div>
 
           <div class="calendar-item reveal">
             <span>THU · TRUST</span>
-            <strong>Customer review</strong>
+            <strong>Customer review prompt</strong>
           </div>
 
           <div class="calendar-item reveal">
@@ -445,181 +243,62 @@
 
           <div class="calendar-item reveal">
             <span>SAT · ENGAGE</span>
-            <strong>Poll or question</strong>
+            <strong>Poll or question idea</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CATEGORIES -->
+    <!-- BUSINESS CATEGORIES -->
     <section class="section">
       <div class="section-heading reveal">
-        <p class="eyebrow">
-          <i class="bi bi-collection"></i>
-          Made for first categories
-        </p>
-
+        <p class="eyebrow">Business categories</p>
         <h2>Shuruat in businesses se</h2>
-
         <p>
-          Launch ke first phase mein focused categories rakhenge, jisse content generic nahi lagega.
+          Select your business category in the plan request form so the request
+          has the right context.
         </p>
       </div>
 
-      <div class="lb-category-grid">
-        <article class="lb-category-card reveal">
-          <div class="lb-category-image">
-            <img
-              src="https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/71f2ec54-e7e5-50b7-9859-54ec8a6276c5/b348fcb9-a526-5b78-9a99-5a9ae16753d6.jpg"
-              alt="Modern beauty salon interior"
-              loading="lazy"
-            >
-
-            <span class="lb-category-logo">
-              <i class="bi bi-scissors"></i>
-            </span>
-          </div>
-
-          <div class="lb-category-body">
-            <h3>Salon &amp; Beauty</h3>
-
-            <p>
-              Bookings, before/after-friendly ideas, party looks, weekday offers
-              aur returning customers.
-            </p>
-          </div>
+      <div class="three-column stagger-parent">
+        <article class="info-card how-step-card reveal">
+          <span class="resource-tag">Beauty</span>
+          <div class="step-number">01</div>
+          <h3>Salon &amp; Beauty</h3>
+          <p>
+            Ideas for bookings, seasonal services, weekday offers and returning
+            customers.
+          </p>
         </article>
 
-        <article class="lb-category-card reveal">
-          <div class="lb-category-image">
-            <img
-              src="https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/d0e42ec7-c513-5760-9e44-1e16e41392ca/b348fcb9-a526-5b78-9a99-5a9ae16753d6.jpg"
-              alt="Modern cafe interior"
-              loading="lazy"
-            >
-
-            <span class="lb-category-logo">
-              <i class="bi bi-cup-hot"></i>
-            </span>
-          </div>
-
-          <div class="lb-category-body">
-            <h3>Restaurant, Café &amp; Bakery</h3>
-
-            <p>
-              Daily menu angles, delivery, local occasions, repeat customers
-              aur visual food content.
-            </p>
-          </div>
+        <article class="info-card how-step-card reveal">
+          <span class="resource-tag">Food</span>
+          <div class="step-number">02</div>
+          <h3>Restaurant, Café &amp; Bakery</h3>
+          <p>
+            Ideas for menu features, local occasions, visual content and repeat
+            customers.
+          </p>
         </article>
 
-        <article class="lb-category-card reveal">
-          <div class="lb-category-image">
-            <img
-              src="https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/f13f71b2-b4fd-5e73-828a-8e79d9308da3/ff65e6a8-7fa7-5800-a68d-40c87b06ce82.jpg"
-              alt="Modern gym interior with fitness equipment"
-              loading="lazy"
-            >
-
-            <span class="lb-category-logo">
-              <i class="bi bi-heart-pulse"></i>
-            </span>
-          </div>
-
-          <div class="lb-category-body">
-            <h3>Gym, Yoga &amp; Fitness</h3>
-
-            <p>
-              Trial leads, beginner tips, class promotion, member stories
-              aur local challenges.
-            </p>
-          </div>
+        <article class="info-card how-step-card reveal">
+          <span class="resource-tag">Fitness</span>
+          <div class="step-number">03</div>
+          <h3>Gym, Yoga &amp; Fitness</h3>
+          <p>
+            Ideas for beginner tips, class promotions, trial enquiries and
+            member engagement.
+          </p>
         </article>
       </div>
     </section>
   </main>
 
- <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <!-- Brand -->
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <span class="brand-mark">LB</span>
-          LocalBoost AI
-        </a>
-        <p>Local businesses ke liye simple, practical AI marketing.</p>
+  <!-- Shared footer and chatbot placeholders -->
+  <div id="sharedFooter"></div>
+  <div id="sharedChatbot"></div>
 
-        <div class="footer-social">
-          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-            <i class="bi bi-instagram"></i>
-          </a>
-          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-            <i class="bi bi-facebook"></i>
-          </a>
-          <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <i class="bi bi-whatsapp"></i>
-          </a>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <i class="bi bi-linkedin"></i>
-          </a>
-          <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
-            <i class="bi bi-youtube"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="index.html">Home</a>
-        <a href="how-it-works.html">How it works</a>
-        <a href="features.html">Features</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="resources.html">Resources</a>
-      </div>
-
-      <!-- For Business -->
-      <div class="footer-col">
-        <h4>For Business</h4>
-        <a href="generator.html">Get my plan</a>
-        <a href="gym-growth-plan.html">Gym Plan</a>
-        <a href="features.html">Features</a>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:shubhamj232116@gmail.com">shubhamj232116@gmail.com</a>
-        <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp Support</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      © 2026 LocalBoost AI. All rights reserved. Designed &amp; Developed by <strong>Shubham Jaiswal</strong>.
-    </div>
-  </div>
-</footer>
-  <script src="script.js"></script>
-
-  <script>
-    // Button ripple
-    document.querySelectorAll(".button").forEach((button) => {
-      button.addEventListener("click", function (event) {
-        const ripple = document.createElement("span");
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
-        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
-        ripple.classList.add("lb-ripple");
-
-        button.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-      });
-    });
-  </script>
+  <!-- Loads footer.html, chatbot.html, then script.js -->
+  <script src="shared-layout.js"></script>
 </body>
 </html>

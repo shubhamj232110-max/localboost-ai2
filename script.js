@@ -114,10 +114,128 @@ if (typewriterText) {
 }
 
 /* -------------------------
+   Home-page in-place style picker and chat transition
+------------------------- */
+
+const homeStyleButtons = Array.from(
+  document.querySelectorAll("[data-home-style]")
+);
+const homePromptForm = document.getElementById("homePromptForm");
+const homePrompt = document.getElementById("homePrompt");
+const stylePicker = document.getElementById("stylePicker");
+const homeChat = document.getElementById("homeChat");
+const homeBackButton = document.getElementById("homeBack");
+const homeChatTitle = document.getElementById("chat-title");
+const homeChatMessages = document.getElementById("homeChatMessages");
+const homeChatForm = document.getElementById("homeChatForm");
+const homeChatInput = document.getElementById("homeChatInput");
+
+if (
+  homeStyleButtons.length &&
+  homePromptForm &&
+  homePrompt &&
+  stylePicker &&
+  homeChat &&
+  homeBackButton &&
+  homeChatTitle &&
+  homeChatMessages &&
+  homeChatForm &&
+  homeChatInput
+) {
+  let selectedHomeStyle =
+    homeStyleButtons.find((button) => button.getAttribute("aria-pressed") === "true") ||
+    homeStyleButtons[0];
+
+  function getSelectedStyleName() {
+    return selectedHomeStyle.querySelector("strong").textContent.trim();
+  }
+
+  function appendHomeMessage(message, isUser) {
+    const messageElement = document.createElement("p");
+    messageElement.className = isUser
+      ? "jarvis-message is-user"
+      : "jarvis-message";
+    messageElement.textContent = message;
+    homeChatMessages.append(messageElement);
+  }
+
+  homeStyleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      homeStyleButtons.forEach((option) => {
+        const isSelected = option === button;
+        option.classList.toggle("is-selected", isSelected);
+        option.setAttribute("aria-pressed", String(isSelected));
+      });
+      selectedHomeStyle = button;
+    });
+  });
+
+  document.querySelectorAll("[data-prompt]").forEach((suggestion) => {
+    suggestion.addEventListener("click", () => {
+      homePrompt.value = suggestion.dataset.prompt;
+      homePrompt.focus();
+    });
+  });
+
+  homePromptForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const prompt = homePrompt.value.trim();
+    const styleName = getSelectedStyleName();
+
+    homeChatTitle.textContent = `${styleName} interface selected.`;
+    homeChatMessages.replaceChildren();
+    appendHomeMessage(
+      prompt || `Mujhe ${styleName} interface dikhayein.`,
+      true
+    );
+    appendHomeMessage(
+      `Aapka ${styleName} preview isi page par hai. Yeh demo hai; live AI responses abhi connected nahi hain.`,
+      false
+    );
+
+    stylePicker.hidden = true;
+    stylePicker.classList.remove("is-active");
+    homeChat.hidden = false;
+    homeChat.classList.remove("is-active");
+    window.requestAnimationFrame(() => homeChat.classList.add("is-active"));
+    homeChatInput.value = "";
+    homeChatInput.focus({ preventScroll: true });
+  });
+
+  homeChatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const message = homeChatInput.value.trim();
+
+    if (!message) return;
+
+    appendHomeMessage(message, true);
+    appendHomeMessage(
+      "Yeh in-page demo hai, isliye abhi live AI response generate nahi hota.",
+      false
+    );
+    homeChatInput.value = "";
+    homeChatInput.focus();
+    homeChatMessages.scrollTop = homeChatMessages.scrollHeight;
+  });
+
+  homeBackButton.addEventListener("click", () => {
+    homeChat.hidden = true;
+    homeChat.classList.remove("is-active");
+    stylePicker.hidden = false;
+    stylePicker.classList.remove("is-active");
+    window.requestAnimationFrame(() => stylePicker.classList.add("is-active"));
+    selectedHomeStyle.focus({ preventScroll: true });
+  });
+}
+
+/* -------------------------
    URL preselection
+   - ?category=gym selects Gym
+   - ?plan=starter selects Starter
 ------------------------- */
 
 const urlParams = new URLSearchParams(window.location.search);
+
 const categorySelect = document.getElementById("category");
 
 if (categorySelect && urlParams.get("category") === "gym") {
@@ -141,10 +259,14 @@ if (planFromUrl && allowedPlans.includes(planFromUrl)) {
 
 /* =========================================================
    GENERATOR MULTI-STEP FORM
+   Requires [data-form-step="1"], [data-form-step="2"],
+   [data-form-step="3"] in generator.html.
 ========================================================= */
 
 const generatorForm = document.getElementById("generatorForm");
-const formSteps = Array.from(document.querySelectorAll("[data-form-step]"));
+const formSteps = Array.from(
+  document.querySelectorAll("[data-form-step]")
+);
 const progressSteps = Array.from(
   document.querySelectorAll("[data-progress-step]")
 );
@@ -214,7 +336,9 @@ function validateVisibleStep() {
 
   if (!currentElement) return true;
 
-  const fields = currentElement.querySelectorAll("input, select, textarea");
+  const fields = currentElement.querySelectorAll(
+    "input, select, textarea"
+  );
 
   for (const field of fields) {
     if (!field.checkValidity()) {
@@ -341,23 +465,21 @@ if (generatorForm) {
         throw new Error("Formspree submission failed.");
       }
 
-      setSubmitState("is-success", "Request received ✓");
+     setSubmitState("is-success", "Request received ✓");
 
-      window.setTimeout(function () {
-        window.location.href = "thank-you.html";
-      }, 500);
+window.setTimeout(function () {
+  window.location.href = "thank-you.html";
+}, 500);
 
       generatorForm.reset();
 
+      // Keep the Gym category selected if the visitor came from the Gym page.
       if (categorySelect && urlParams.get("category") === "gym") {
         categorySelect.value = "Gym / Fitness / Yoga";
       }
 
-      if (
-        requestedPlanHidden &&
-        planFromUrl &&
-        allowedPlans.includes(planFromUrl)
-      ) {
+      // Keep the selected plan after clearing the rest of the form.
+      if (requestedPlanHidden && planFromUrl && allowedPlans.includes(planFromUrl)) {
         requestedPlanHidden.value = planFromUrl;
       }
 
@@ -384,387 +506,5 @@ if (generatorForm) {
   });
 }
 
-/* =========================================================
-   LOCALBOOST ASSISTANT
-========================================================= */
 
-const chatLauncher = document.getElementById("lbChatLauncher");
-const chatWindow = document.getElementById("lbChatWindow");
-const chatClose = document.getElementById("lbChatClose");
-const chatBody = document.getElementById("lbChatBody");
-const chatForm = document.getElementById("lbChatForm");
-const chatInput = document.getElementById("lbChatInput");
-const chatQuickActions = document.getElementById("lbChatQuickActions");
-
-let welcomeShown = false;
-let leadStep = "";
-let leadData = {};
-let chatHistory = [];
-
-function scrollChatToBottom() {
-  if (chatBody) {
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
-}
-
-function addChatMessage(html, sender = "bot") {
-  if (!chatBody) return;
-
-  const message = document.createElement("div");
-  message.className = `lb-message ${sender}`;
-  message.innerHTML = html;
-
-  chatBody.appendChild(message);
-  scrollChatToBottom();
-}
-
-function addUserChatMessage(text) {
-  if (!chatBody) return;
-
-  const message = document.createElement("div");
-  message.className = "lb-message user";
-  message.textContent = text;
-
-  chatBody.appendChild(message);
-  scrollChatToBottom();
-}
-
-function showChatTyping() {
-  if (!chatBody || document.getElementById("lbTyping")) return;
-
-  const typing = document.createElement("div");
-  typing.className = "lb-typing";
-  typing.id = "lbTyping";
-  typing.innerHTML = "<span></span><span></span><span></span>";
-
-  chatBody.appendChild(typing);
-  scrollChatToBottom();
-}
-
-function removeChatTyping() {
-  const typing = document.getElementById("lbTyping");
-
-  if (typing) {
-    typing.remove();
-  }
-}
-
-function showChatWelcome() {
-  if (welcomeShown) return;
-
-  addChatMessage(
-    "Namaste! 👋<br><br>" +
-      "Main <strong>LocalBoost Assistant</strong> hoon. " +
-      "Main marketing, coding, padhai, general knowledge aur LocalBoost services ke baare mein help kar sakta hoon.<br><br>" +
-      "Aap kya jaanna chahte hain?"
-  );
-
-  welcomeShown = true;
-}
-
-function startChatLeadFlow() {
-  leadData = {};
-  leadStep = "name";
-
-  addChatMessage(
-    "Great! Main aapko free plan request form tak guide karta hoon.<br><br>" +
-      "Pehle, aapka naam kya hai?"
-  );
-}
-
-function continueChatLeadFlow(userText) {
-  if (leadStep === "name") {
-    leadData.name = userText;
-    leadStep = "email";
-
-    addChatMessage("Thanks! Aapka email address kya hai?");
-    return true;
-  }
-
-  if (leadStep === "email") {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(userText)) {
-      addChatMessage(
-        "Please valid email address type karein, jaise name@example.com."
-      );
-      return true;
-    }
-
-    leadData.email = userText;
-    leadStep = "businessType";
-
-    addChatMessage(
-      "Aapka business type kya hai?<br><br>" +
-        "<strong>Gym, Salon, Restaurant, Shop, Coaching, Other</strong>"
-    );
-
-    return true;
-  }
-
-  if (leadStep === "businessType") {
-    leadData.businessType = userText;
-    leadStep = "businessName";
-
-    addChatMessage("Aapke business ka naam kya hai?");
-    return true;
-  }
-
-  if (leadStep === "businessName") {
-    leadData.businessName = userText;
-    leadStep = "city";
-
-    addChatMessage("Aapka city ya area kya hai?");
-    return true;
-  }
-
-  if (leadStep === "city") {
-    leadData.city = userText;
-    leadStep = "goal";
-
-    addChatMessage(
-      "Aapka main marketing goal kya hai?<br><br>" +
-        "Example: more enquiries, bookings, walk-ins, Instagram growth."
-    );
-
-    return true;
-  }
-
-  if (leadStep === "goal") {
-    leadData.goal = userText;
-    leadStep = "";
-
-    addChatMessage(
-      `Thank you! 🙌<br><br>` +
-        `Business: <strong>${leadData.businessName}</strong><br>` +
-        `Category: <strong>${leadData.businessType}</strong><br>` +
-        `City/Area: <strong>${leadData.city}</strong><br>` +
-        `Goal: <strong>${leadData.goal}</strong><br><br>` +
-        "Chat ke answers abhi form submission nahi hain. " +
-        '<a href="generator.html">Official request form kholen →</a>'
-    );
-
-    return true;
-  }
-
-  return false;
-}
-
-function getChatReply(userText) {
-  const text = userText.toLowerCase().trim();
-
-  if (
-    text.includes("free custom plan") ||
-    text.includes("free plan") ||
-    text.includes("request plan") ||
-    text.includes("custom plan")
-  ) {
-    startChatLeadFlow();
-    return null;
-  }
-
-  if (
-    text.includes("gym") ||
-    text.includes("fitness") ||
-    text.includes("workout") ||
-    text.includes("biceps")
-  ) {
-    return (
-      "Gym plan mein local content ideas, Reel hooks, offer concepts, " +
-      "Google Business Profile actions aur member-engagement ideas ho sakte hain.<br><br>" +
-      '<a href="gym-growth-plan.html">Open Gym Growth Plan →</a>'
-    );
-  }
-
-  if (
-    text.includes("price") ||
-    text.includes("pricing") ||
-    text.includes("cost") ||
-    text.includes("kitna") ||
-    text.includes("₹")
-  ) {
-    return (
-      "Pricing page par proposed plans diye gaye hain. Button se request form khulta hai; " +
-      "abhi website payment collect nahi karti.<br><br>" +
-      '<a href="pricing.html">View Pricing →</a>'
-    );
-  }
-
-  if (
-    text.includes("service") ||
-    text.includes("feature") ||
-    text.includes("localboost") ||
-    text.includes("what do you do")
-  ) {
-    return (
-      "LocalBoost plans mein content topics, captions, Reel scripts, offer ideas " +
-      "aur opted-in customers ke liye WhatsApp draft ideas shamil ho sakte hain.<br><br>" +
-      '<a href="features.html">See Features →</a>'
-    );
-  }
-
-  if (
-    text.includes("whatsapp") ||
-    text.includes("message") ||
-    text.includes("broadcast")
-  ) {
-    return (
-      "WhatsApp promotional messages sirf un logon ko bhejein jinhone updates paane ki permission di ho. " +
-      "Opt-out requests ko respect karein."
-    );
-  }
-
-  if (
-    text.includes("reel") ||
-    text.includes("instagram") ||
-    text.includes("caption") ||
-    text.includes("content")
-  ) {
-    return (
-      "Aap plan mein phone-friendly Reel scripts, captions aur CTAs request kar sakte hain. " +
-      "Post karne se pehle offers, prices aur business details verify karein."
-    );
-  }
-
-  if (
-    text.includes("hello") ||
-    text.includes("hi") ||
-    text.includes("hey") ||
-    text.includes("namaste")
-  ) {
-    return (
-      "Namaste! Aap Gym, Salon, Restaurant ya kisi aur local business ke liye plan request kar sakte hain. " +
-      "Aapko kis cheez mein help chahiye?"
-    );
-  }
-
-  return null;
-}
-
-async function replyToChat(userText) {
-  showChatTyping();
-
-  chatHistory.push({ role: "user", text: userText });
-
-  try {
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: userText,
-        history: chatHistory.slice(-8)
-      })
-    });
-
-    const data = await response.json();
-    removeChatTyping();
-
-    if (!response.ok) {
-      console.error("Chat API error:", data);
-
-      const handledAsLeadFlow = continueChatLeadFlow(userText);
-
-      if (!handledAsLeadFlow) {
-        const localReply = getChatReply(userText);
-
-        if (localReply) {
-          chatHistory.push({ role: "model", text: localReply });
-          addChatMessage(localReply);
-        } else {
-          addChatMessage(
-            "AI service abhi available nahi hai. Thodi der baad try karein."
-          );
-        }
-      }
-
-      return;
-    }
-
-    const reply =
-      data.reply ||
-      "Maaf kijiye, abhi jawab generate nahi ho paya. Dobara try karein.";
-
-    chatHistory.push({ role: "model", text: reply });
-    addChatMessage(reply);
-  } catch (error) {
-    removeChatTyping();
-
-    const handledAsLeadFlow = continueChatLeadFlow(userText);
-
-    if (!handledAsLeadFlow) {
-      const localReply = getChatReply(userText);
-
-      if (localReply) {
-        chatHistory.push({ role: "model", text: localReply });
-        addChatMessage(localReply);
-      } else {
-        addChatMessage("Server se connection nahi hua. Dobara try karein.");
-      }
-    }
-  }
-}
-
-function openChat() {
-  if (!chatWindow || !chatLauncher) return;
-
-  chatWindow.classList.add("open");
-  chatWindow.setAttribute("aria-hidden", "false");
-  chatLauncher.setAttribute("aria-expanded", "true");
-
-  showChatWelcome();
-
-  window.setTimeout(() => {
-    if (chatInput) chatInput.focus();
-  }, 200);
-}
-
-function closeChat() {
-  if (!chatWindow || !chatLauncher) return;
-
-  chatWindow.classList.remove("open");
-  chatWindow.setAttribute("aria-hidden", "true");
-  chatLauncher.setAttribute("aria-expanded", "false");
-}
-
-if (chatLauncher) {
-  chatLauncher.addEventListener("click", () => {
-    if (chatWindow && chatWindow.classList.contains("open")) {
-      closeChat();
-    } else {
-      openChat();
-    }
-  });
-}
-
-if (chatClose) {
-  chatClose.addEventListener("click", closeChat);
-}
-
-if (chatForm && chatInput) {
-  chatForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const userText = chatInput.value.trim();
-
-    if (!userText) return;
-
-    addUserChatMessage(userText);
-    chatInput.value = "";
-    replyToChat(userText);
-  });
-}
-
-if (chatQuickActions) {
-  chatQuickActions.querySelectorAll("button").forEach((button) => {
-    button.addEventListener("click", () => {
-      const question = button.dataset.question;
-
-      if (!question) return;
-
-      addUserChatMessage(question);
-      replyToChat(question);
-    });
-  });
-}
+ 
